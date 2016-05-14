@@ -4,13 +4,11 @@
 #include <memory>
 #include <UnitTest++/UnitTest++.h>
 
-#include "../../src/base.hpp"
 #include "../../src/types/inc/number.hpp"
 
 #include "../config.hpp"
-#include "../factory.hpp"
 
-extern husky::tests::Factory<husky::Base> fact;
+using husky::tests::fact;
 
 SUITE(TypesNumberTests)
 {

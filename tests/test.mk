@@ -2,7 +2,8 @@ TEST_F += \
 \
 $(TYPES_F) \
 tests/main.cpp \
-tests/types/number.cpp
+tests/types/number.cpp \
+tests/types/router.cpp
 # tests/main/inhandler_tests.cpp
 # tests/main/outhandler_tests.cpp
 # tests/main/main_tests.cpp \

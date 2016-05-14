@@ -3,10 +3,18 @@
 #include <UnitTest++/UnitTest++.h>
 
 #include "../src/base.hpp"
+#include "../src/factory.hpp"
+
 #include "config.hpp"
 #include "factory.hpp"
 
-husky::tests::Factory<husky::Base> fact;
+namespace husky {
+    Factory<Base> fact;
+
+    namespace tests {
+        Factory<Base> fact;
+    }
+}
 
 TEST(JustChecksForUnitTestToWork)
 {
@@ -34,11 +42,13 @@ TEST(FileSystemAccess)
     }
 }
 
+
 int main(int, const char *[])
 {
     int retval = UnitTest::RunAllTests();
 
-    fact.clean();
+    husky::fact.clean();
+    husky::tests::fact.clean();
 
     return retval;
 }
