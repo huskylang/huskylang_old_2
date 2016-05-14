@@ -1,0 +1,8 @@
+-:=(num, &
+    (0) -> 1,
+    (1) -> 3,
+    (2) -> 6,
+    (n) -> this(n - 1).
+)
+
+cs:out :num(list:to_integer(cs:inl)) -:- 1
