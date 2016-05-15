@@ -1,7 +1,8 @@
+
 TEST_F += \
 \
-$(TYPES_F) \
 tests/main.cpp \
+$(TYPES_F) \
 tests/types/number.cpp \
 tests/types/router.cpp
 # tests/main/inhandler_tests.cpp

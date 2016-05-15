@@ -7,18 +7,19 @@
 #include "../../src/types/inc/number.hpp"
 
 #include "../config.hpp"
+#include "../abstract_fixture.hpp"
 
 using husky::tests::fact;
 
 SUITE(TypesNumberTests)
 {
-    class NumberFixture
+    class NumberFixture : public husky::tests::AbstractFixture
     {
     public:
-        husky::types::Number *number;
+        husky::types::Number number;
 
         husky::types::Number *init(std::stringstream &srcLine) {
-            return this->number = fact.create<husky::types::Number>(srcLine);
+            return this->number.parse(srcLine);
         };
     };
 

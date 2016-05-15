@@ -9,11 +9,11 @@
 #include "factory.hpp"
 
 namespace husky {
-    Factory<Base> fact;
-
     namespace tests {
-        Factory<Base> fact;
+        Factory<husky::Base> fact;
     }
+
+    Factory<Base> fact;
 }
 
 TEST(JustChecksForUnitTestToWork)

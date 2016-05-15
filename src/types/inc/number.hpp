@@ -10,26 +10,25 @@ namespace husky {
     namespace types {
 
         namespace number {
-            extern std::string id();
+            static const std::string id = "number";
         }
-
+        
         class Number : public AbstractType
         {
-        protected:
+        private:
             double value;
 
         public:
-            Number(std::stringstream &srcLine);
-            virtual Number *clone(std::stringstream &srcLine) { return new Number(srcLine); };
+            virtual Number *clone();
+            virtual Number *parse(std::stringstream &srcLine);
             
             virtual double toDouble();
-            virtual std::string toString() { return ""; };
+            virtual std::string toString();
             
             static bool check(char ch) { return isdigit(ch); };
-            virtual std::string id() { return number::id(); };
-
-            /** TODO toString **/
+            virtual std::string id() { return number::id; };
         };
+        
     }
 }
 

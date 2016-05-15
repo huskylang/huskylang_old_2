@@ -1,5 +1,5 @@
+#include <iostream>
 #include <sstream>
-#include <map>
 
 #include "../base.hpp"
 #include "../factory.hpp"
@@ -11,19 +11,19 @@
 using namespace husky::types;
 
 Router::Router()
-{
+{ /* just list here all types */
     this->add<Number>();
 }
 
-AbstractType *Router::choose(std::stringstream &srcLine)
+AbstractType *Router::choose(char ch)
 {
-    char ch;
-    
-    srcLine >> ch;
-    srcLine.putback(ch);
+    for (auto const &route : routes) {
+        if (route.first(ch)) {
+            return route.second->clone();
+        }
+    }
 
-    for (auto const &route : routes)
-        if (route.first(ch)) return route.second->clone(srcLine);
+    /* Type not found */
 
-    throw(new TypeChooseError());
+    throw TypeChooseError();
 }

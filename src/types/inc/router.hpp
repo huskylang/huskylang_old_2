@@ -2,7 +2,7 @@
 #define HUSKY_TYPES_ROUTER_HPP
 
 #include <map>
-#include <sstream>
+#include <exception>
 
 #include "../../base.hpp"
 #include "../../factory.hpp"
@@ -26,17 +26,18 @@ namespace husky {
 
         public:
             Router();
-            virtual AbstractType *choose(std::stringstream &srcLine);
+            virtual AbstractType *choose(char ch);
 
             template <typename T>
             void add() {
-                this->routes[&T::check] = fact.create<T>(std::stringstream(""));
+                this->routes[&T::check] = fact.create<T>();
             };
         };
 
         class TypeChooseError : public std::exception
         {
-            const char *what() const throw() {
+        public:
+            virtual const char *what() const noexcept {
                 return "can't choose a type";
             };
         };
