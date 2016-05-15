@@ -34,10 +34,8 @@ SUITE(TypesNumberTests)
     {
         std::stringstream srcLine ("jlk53829");
 
-        srcLine.get();
-        srcLine.get();
-        srcLine.get();
-
+        this->repeat([&] { return srcLine.get(); }, 3);
+        
 		CHECK_EQUAL(53829,
                     this->init(srcLine)->toDouble());
     }

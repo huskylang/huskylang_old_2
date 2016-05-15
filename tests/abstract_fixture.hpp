@@ -6,7 +6,13 @@ namespace husky {
 
         class AbstractFixture
         {
-            //
+        public:
+            template <typename Func>
+            auto repeat(Func fun, int times) {
+                auto val = fun();
+                for (times--; times > 0; times--) val = fun();
+                return val;
+            };
         };
         
     }

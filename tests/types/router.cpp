@@ -32,8 +32,7 @@ SUITE(TypesRouterTests)
     {
         std::stringstream srcLine(", 123.32 sfds");
 
-        srcLine.get();
-        srcLine.get();
+        this->repeat([&] { return srcLine.get(); }, 2);
 
         this->type = this->router.choose(srcLine.get());
 
@@ -45,8 +44,7 @@ SUITE(TypesRouterTests)
     {
         std::stringstream srcLine("__*fklsajdf");
 
-        srcLine.get();
-        srcLine.get();
+        this->repeat([&] { return srcLine.get(); }, 2);
 
         CHECK_THROW(this->router.choose(srcLine.get()),
                     husky::types::TypeChooseError);
